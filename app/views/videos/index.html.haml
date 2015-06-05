@@ -1,9 +1,9 @@
 %article.video_category
   - @categories.each do |category|
     .videos.row
-      %h3.text-center
-        -# %hr
-        = link_to category.name, ""
+      %h3
+      %br
+        = link_to category.name
         %hr
       - category.recent_videos.each do |video|
         - if category.id == video.category_id
