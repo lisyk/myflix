@@ -1,5 +1,7 @@
-class VideosController < ActionController::Base
+class VideosController < ApplicationController
   layout "application"
+
+  before_filter :require_user
 
   def index
     @categories = Category.all
