@@ -8,7 +8,7 @@
   .col-md-5.navbar-form
     .form-group
       = form_tag search_videos_path, method: "get" do
-        = text_field_tag :search_item, placeholder="Search for videos here"
+        = text_field_tag :search_item, nil, placeholder: "Search for videos here"
         = submit_tag "Search"
 
     #user_links.pull-right
