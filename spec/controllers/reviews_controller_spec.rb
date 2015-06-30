@@ -29,22 +29,18 @@ describe ReviewsController do
 
       context "with invalid inputs" do
         it "does not create a review" do
-
           post :create, review: {rating: 1}, video_id: video.id
           expect(Review.count).to eq(0)
         end
         it "renders videos/show template" do
-
           post :create, review: {rating: 2}, video_id: video.id
           expect(response).to render_template 'videos/show'
         end
         it "sets @video" do
-
           post :create, review: {rating: 3}, video_id: video.id
           expect(assigns(:video)).to eq(video)
         end
         it "sets @review" do
-
           review = Fabricate(:review, video: video)
           post :create, review: {rating: 3}, video_id: video.id
           expect(assigns(:reviews)).to match_array([review])
@@ -54,15 +50,13 @@ describe ReviewsController do
 
     context "with unauthenticated user" do
       it "redirects to the sign in path" do
-
         post :create, review: Fabricate.attributes_for(:review), video_id: video.id
         expect(response).to redirect_to sign_in_path
-
       end
-
-
     end
 
   end
+
+
 
 end

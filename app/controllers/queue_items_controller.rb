@@ -19,6 +19,15 @@ before_filter :require_user
 
   end
 
+  def update_queue
+    params[:queue_items].each do |queue_item_data|
+      queue_item = QueueItem.find(queue_item_data["id"])
+      queue_item.update_attributes(position: queue_item_data["position"])
+    end
+    redirect_to my_queue_path
+
+  end
+
   private
 
   def queue_position
