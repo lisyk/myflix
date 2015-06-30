@@ -10,6 +10,15 @@ before_filter :require_user
     redirect_to my_queue_path
   end
 
+  def destroy
+    redirect_to my_queue_path
+    queue_item = QueueItem.find(params[:id])
+    if queue_item.user == current_user
+      queue_item.destroy
+    end
+
+  end
+
   private
 
   def queue_position
